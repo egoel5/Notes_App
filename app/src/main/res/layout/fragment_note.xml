@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".NoteFragment"
-    android:layout_margin="10dp">
+    tools:context=".EditNoteFragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.c323_project6.EditNoteViewModel" />
+    </data>
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="10dp">
 
         <EditText
             android:id="@+id/etTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Title"
-            android:height="50dp">
+            android:text="@={viewModel.note.noteTitle}">
 
         </EditText>
 
@@ -25,8 +30,9 @@
             android:id="@+id/etDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:height="614dp"
-            android:hint="Description">
+            android:hint="Description"
+            android:layout_weight="2"
+            android:text="@={viewModel.note.noteText}">
 
         </EditText>
 
@@ -36,9 +42,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Save"
-            android:height="48dp">
+            android:onClick="@{() -> viewModel.updateNote()}">
 
         </Button>
     </LinearLayout>
 
-</FrameLayout>
+</layout>

@@ -3,28 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainScreen">
+    app:startDestination="@id/mainFragment">
 
     <fragment
-        android:id="@+id/mainScreen"
-        android:name="com.example.c323_project6.mainScreen"
+        android:id="@+id/mainFragment"
+        android:name="com.example.c323_project6.MainFragment"
         android:label="fragment_main_screen"
         tools:layout="@layout/fragment_main_screen" >
         <action
-            android:id="@+id/action_mainScreen_to_noteFragment"
-            app:destination="@id/noteFragment" />
+            android:id="@+id/action_mainFragment_to_editNoteFragment"
+            app:destination="@id/editNoteFragment" />
+        <argument
+            android:name="noteId"
+            app:argType="long">
+        </argument>
     </fragment>
     <fragment
-        android:id="@+id/noteFragment"
-        android:name="com.example.c323_project6.NoteFragment"
+        android:id="@+id/editNoteFragment"
+        android:name="com.example.c323_project6.EditNoteFragment"
         android:label="fragment_note"
         tools:layout="@layout/fragment_note" >
         <action
-            android:id="@+id/action_noteFragment_to_mainScreen"
-            app:destination="@id/mainScreen" />
+            android:id="@+id/action_editNoteFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
         <argument
-            android:name="titleText"
-            android:defaultValue="">
+            android:name="noteId"
+            app:argType="long">
         </argument>
     </fragment>
 </navigation>
