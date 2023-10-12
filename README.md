@@ -6,10 +6,10 @@ This application can allow users to create, save, and update notes. This allows 
 
 The following **required** functionality is completed:
 
-* [ ] User sees all their previous notes from last session
-* [ ] User can create new notes
-* [ ] User can update pre-existing notes
-* [ ] User can delete notes
+* [✅] User sees all their previous notes from last session
+* [✅] User can create new notes
+* [✅] User can update pre-existing notes
+* [✅] User can delete notes
 
 The following **extensions** are implemented:
 * N/A
