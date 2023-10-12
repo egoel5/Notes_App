@@ -12,7 +12,7 @@ The following **required** functionality is completed:
 * [✅] User can delete notes
 
 The following **extensions** are implemented:
-* N/A
+* Every new note is initialized with a preset title instead of just a blank title
 
 ## Video Walkthrough
 
