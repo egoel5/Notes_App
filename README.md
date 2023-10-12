@@ -20,7 +20,7 @@ Here's a walkthrough of implemented user stories:
 
 ![]()
 
-GIF created with [Adobe Express]().
+GIF created with [Adobe Express](https://new.express.adobe.com).
 
 ## Notes
 
