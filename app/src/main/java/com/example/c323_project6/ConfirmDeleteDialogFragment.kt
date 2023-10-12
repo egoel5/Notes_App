@@ -14,6 +14,11 @@ class ConfirmDeleteDialogFragment(val taskId : Long,val clickListener: (taskId: 
     }
 
     var listener: myClickListener? = null
+
+    /**
+     * Initialize a Fragment that will act as a Delete Confirmation
+     * Set message, positiveButton's text, and negative button's text
+     */
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
         AlertDialog.Builder(requireContext())
             .setMessage(getString(R.string.delete_confirmation))

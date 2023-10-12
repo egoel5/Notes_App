@@ -12,19 +12,23 @@ import com.example.c323_project6.EditNoteFragmentArgs
 import com.example.c323_project6.databinding.FragmentNoteBinding
 
 class EditNoteFragment : Fragment() {
+    // initialize binding and add non-null asserted calls
     private var _binding: FragmentNoteBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //inflate layout and get noteId from MainFragment
         _binding = FragmentNoteBinding.inflate(inflater, container, false)
         val view = binding.root
         val noteId = EditNoteFragmentArgs.fromBundle(requireArguments()).noteId
 
+        // initialize application and dao
         val application = requireNotNull(this.activity).application
         val dao = NoteDatabase.getInstance(application).noteDao
 
+        // initialize the ViewModelFactory and get the viewModel, then set viewModel and lifecycleOwner
         val viewModelFactory = EditNoteViewModelFactory(noteId, dao)
         val viewModel = ViewModelProvider(this, viewModelFactory)
             .get(EditNoteViewModel::class.java)
@@ -32,6 +36,7 @@ class EditNoteFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+        // navigate back to MainFragment
         viewModel.navigateToList.observe(viewLifecycleOwner, Observer { navigate ->
             if (navigate) {
                 view.findNavController()

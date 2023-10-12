@@ -7,6 +7,10 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 
+/**
+ * Interface containing basic functions such as insert, update, and delete for Note
+ * also contains Query methods
+ */
 @Dao
 interface NoteDao {
     @Insert

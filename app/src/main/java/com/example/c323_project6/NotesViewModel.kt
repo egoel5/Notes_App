@@ -11,6 +11,9 @@ class NotesViewModel(val dao: NoteDao) : ViewModel() {
     private val _navigateToNote = MutableLiveData<Long?>()
     val navigateToNote: LiveData<Long?>
         get() = _navigateToNote
+    /**
+     * Add a new note with the newNoteTitle string being the new Note's title
+     */
     fun addNote() {
         viewModelScope.launch {
             val note = Note()
@@ -18,6 +21,9 @@ class NotesViewModel(val dao: NoteDao) : ViewModel() {
             dao.insert(note)
         }
     }
+    /**
+     * Delete note based on note's value
+     */
     fun deleteNote(taskId: Long) {
         viewModelScope.launch {
             val note = Note()
@@ -25,6 +31,10 @@ class NotesViewModel(val dao: NoteDao) : ViewModel() {
             dao.delete(note)
         }
     }
+    /**
+     * make sure navigateToList's value is proper so it doesn't go to EditNoteFragment when it shouldn't
+     */
+
     fun onNoteClicked(taskId: Long) {
         _navigateToNote.value = taskId
     }
