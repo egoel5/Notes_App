@@ -14,15 +14,49 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="10dp">
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/material_dynamic_tertiary40">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notes"
+                android:textSize="35dp"
+                android:textColor="@color/white"
+                ></TextView>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/profileFragment"
+                android:title="Profile"
+                android:src="@android:drawable/ic_menu_help"
+                android:layout_gravity="right"
+                android:background="@color/material_dynamic_tertiary40"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/newNoteFragment"
+                android:title="New Note"
+                android:src="@android:drawable/ic_menu_help"
+                android:layout_gravity="right"
+                android:background="@color/material_dynamic_tertiary40"/>
+
+        </androidx.appcompat.widget.Toolbar>
 
         <EditText
             android:id="@+id/etTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Title"
-            android:text="@={viewModel.note.noteTitle}">
+            android:text="@={viewModel.note.noteTitle}"
+            android:layout_margin="10dp">
 
         </EditText>
 
@@ -32,7 +66,8 @@
             android:layout_height="wrap_content"
             android:hint="Description"
             android:layout_weight="2"
-            android:text="@={viewModel.note.noteText}">
+            android:text="@={viewModel.note.noteText}"
+            android:layout_margin="10dp">
 
         </EditText>
 
@@ -42,7 +77,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Save"
-            android:onClick="@{() -> viewModel.updateNote()}">
+            android:onClick="@{() -> viewModel.updateNote()}"
+            android:layout_margin="10dp">
 
         </Button>
     </LinearLayout>

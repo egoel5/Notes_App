@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import com.example.c323_project6.EditNoteFragmentArgs
 import com.example.c323_project6.databinding.FragmentNoteBinding
 
 class EditNoteFragment : Fragment() {

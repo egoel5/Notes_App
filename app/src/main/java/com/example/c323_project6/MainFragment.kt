@@ -1,5 +1,6 @@
 package com.example.c323_project6
 
+import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.c323_project6.databinding.FragmentMainScreenBinding
+
+
 class MainFragment : Fragment() {
     // initialize binding and add non-null asserted calls
     private var _binding: FragmentMainScreenBinding? = null
@@ -22,6 +26,11 @@ class MainFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentMainScreenBinding.inflate(inflater, container, false)
         val view = binding.root
+
+        val noteList = binding.notesList
+        val staggeredGridLayoutManager =
+            StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
+        noteList.layoutManager = staggeredGridLayoutManager
 
         // initialize application and dao
         val application = requireNotNull(this.activity).application

@@ -9,27 +9,31 @@
             type="com.example.c323_project6.Note"/>
     </data>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="5dp">
-        <TextView
-            android:id="@+id/note_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="20dp"
-            android:text="@={note.noteTitle}"/>
+        app:cardCornerRadius="5dp"
+        android:layout_margin="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/note_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:text="@={note.noteTitle}"/>
 
-        <Button
-            android:id="@+id/del_button"
-            style="@style/Widget.AppCompat.Button.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/material_dynamic_neutral70"
-            android:text="X"
-            android:textColor="@color/red"
-            android:textSize="30sp"/>
-    </LinearLayout>
+            <TextView
+                android:id="@+id/note_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:text="@={note.noteText}"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </layout>

@@ -31,7 +31,6 @@ class NoteItemAdapter(val clickListener: (noteId: Long) -> Unit,
                  deleteClickListener: (noteId: Long) -> Unit) {
             binding.note = item
             binding.root.setOnClickListener { clickListener(item.noteId) }
-            binding.delButton.setOnClickListener { deleteClickListener(item.noteId) }
         }
     }
 }
