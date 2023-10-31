@@ -1,6 +1,7 @@
 package com.example.c323_project6
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,6 +38,25 @@ class EditNoteFragment : Fragment() {
                 viewModel.onNavigatedToList()
             }
         })
+
+        // navigate to UserScreen Fragment
+        viewModel.navigateToUser.observe(viewLifecycleOwner, Observer { navigate ->
+            if (navigate) {
+                view.findNavController()
+                    .navigate(R.id.action_editNoteFragment_to_userScreen)
+                viewModel.onNavigatedToUser()
+            }
+        })
+
+        fun yesPressed(noteId : String) {
+            //TODO: delete the task with id = noteId
+            viewModel.deleteNote(noteId)
+        }
+
+        binding.delNoteFragment.setOnClickListener{
+            ConfirmDeleteDialogFragment(noteId,::yesPressed).show(childFragmentManager,
+                ConfirmDeleteDialogFragment.TAG)
+        }
         return view
     }
     override fun onDestroyView() {

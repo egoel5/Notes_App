@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -75,6 +76,15 @@ class MainFragment : Fragment() {
                     .actionMainFragmentToEditNoteFragment(noteId)
                 this.findNavController().navigate(action)
                 viewModel.onNoteNavigated()
+            }
+        })
+
+        // navigate to UserScreen Fragment
+        viewModel.navigateToUser.observe(viewLifecycleOwner, Observer { navigate ->
+            if (navigate) {
+                view.findNavController()
+                    .navigate(com.example.c323_project6.R.id.action_editNoteFragment_to_userScreen)
+                viewModel.onNavigatedToUser()
             }
         })
         return view

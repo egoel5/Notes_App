@@ -31,21 +31,23 @@
                 ></TextView>
 
             <ImageButton
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/profileFragment"
                 android:title="Profile"
-                android:src="@android:drawable/ic_menu_help"
+                android:src="@drawable/profile"
                 android:layout_gravity="right"
-                android:background="@color/material_dynamic_tertiary40"/>
+                android:paddingRight="10dp"
+                android:background="@color/material_dynamic_tertiary40"
+                android:onClick="@{() -> viewModel.navigateToUser()}"/>
 
             <ImageButton
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/newNoteFragment"
+                android:layout_height="wrap_content"
+                android:id="@+id/delNoteFragment"
                 android:title="New Note"
-                android:src="@android:drawable/ic_menu_help"
+                android:src="@drawable/delete"
+                android:paddingRight="10dp"
                 android:layout_gravity="right"
                 android:background="@color/material_dynamic_tertiary40"/>
 

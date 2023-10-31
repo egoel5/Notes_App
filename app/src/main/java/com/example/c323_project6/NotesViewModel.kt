@@ -1,5 +1,6 @@
 package com.example.c323_project6
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -45,6 +46,10 @@ class NotesViewModel() : ViewModel() {
     val navigateToSignIn: LiveData<Boolean>
         get() = _navigateToSignIn
 
+    private val _navigateToUser = MutableLiveData<Boolean>(false)
+    val navigateToUser: LiveData<Boolean>
+        get() = _navigateToUser
+
     private lateinit var notesCollection: DatabaseReference
 
 
@@ -61,7 +66,6 @@ class NotesViewModel() : ViewModel() {
         notesCollection = database
             .getReference("notes")
 
-
         notesCollection.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 var notesList : ArrayList<Note> = ArrayList()
@@ -75,8 +79,7 @@ class NotesViewModel() : ViewModel() {
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // Getting Post failed, log a message
-                // ...
+                Log.v("FAIL", "This Post has Failed.")
             }
         })
     }
@@ -96,6 +99,7 @@ class NotesViewModel() : ViewModel() {
 
     fun deleteNote(noteId: String) {
         notesCollection.child(noteId).removeValue()
+        _navigateToList.value = true
     }
     fun onNoteClicked(selectedNote: Note) {
         _navigateToNote.value = selectedNote.noteId
@@ -132,6 +136,14 @@ class NotesViewModel() : ViewModel() {
         _navigateToSignIn.value = false
     }
 
+    fun navigateToUser() {
+        _navigateToUser.value = true
+    }
+
+    fun onNavigatedToUser() {
+        _navigateToUser.value = false
+    }
+
     fun signIn() {
         if (user.email.isEmpty() || user.password.isEmpty()) {
             _errorHappened.value = "Email and password cannot be empty."
@@ -158,7 +170,7 @@ class NotesViewModel() : ViewModel() {
         }
         auth.createUserWithEmailAndPassword(user.email, user.password).addOnCompleteListener {
             if (it.isSuccessful) {
-                //_navigateToSignIn.value = true
+                _navigateToSignIn.value = true
             } else {
                 _errorHappened.value = it.exception?.message
             }
@@ -167,7 +179,7 @@ class NotesViewModel() : ViewModel() {
 
     fun signOut() {
         auth.signOut()
-        //_navigateToSignIn.value = true
+        _navigateToSignIn.value = true
     }
 
     fun getCurrentUser(): FirebaseUser? {
