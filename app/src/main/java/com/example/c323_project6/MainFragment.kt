@@ -83,7 +83,7 @@ class MainFragment : Fragment() {
         viewModel.navigateToUser.observe(viewLifecycleOwner, Observer { navigate ->
             if (navigate) {
                 view.findNavController()
-                    .navigate(com.example.c323_project6.R.id.action_editNoteFragment_to_userScreen)
+                    .navigate(com.example.c323_project6.R.id.action_mainFragment_to_userScreen)
                 viewModel.onNavigatedToUser()
             }
         })

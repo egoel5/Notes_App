@@ -41,6 +41,14 @@ class UserScreen : Fragment() {
                 viewModel.onNavigatedToSignIn()
             }
         })
+
+        viewModel.navigateToList.observe(viewLifecycleOwner, Observer { navigate ->
+            if (navigate) {
+                view.findNavController()
+                    .navigate(R.id.action_userScreen_to_mainFragment)
+                viewModel.onNavigatedToList()
+            }
+        })
         return view
     }
 }

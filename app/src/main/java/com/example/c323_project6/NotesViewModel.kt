@@ -120,6 +120,10 @@ class NotesViewModel() : ViewModel() {
         _navigateToList.value = false
     }
 
+    fun navigateToList() {
+        _navigateToList.value = true
+    }
+
     fun navigateToSignUp() {
         _navigateToSignUp.value = true
     }
