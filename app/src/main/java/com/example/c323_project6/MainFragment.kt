@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -26,40 +27,32 @@ class MainFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentMainScreenBinding.inflate(inflater, container, false)
         val view = binding.root
+        val viewModel : NotesViewModel by activityViewModels()
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
         val noteList = binding.notesList
         val staggeredGridLayoutManager =
             StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL)
         noteList.layoutManager = staggeredGridLayoutManager
 
-        // initialize application and dao
-        val application = requireNotNull(this.activity).application
-        val dao = NoteDatabase.getInstance(application).noteDao
-
-        // initialize the ViewModelFactory and get the viewModel, then set viewModel and lifecycleOwner
-        val viewModelFactory = NotesViewModelFactory(dao)
-        val viewModel = ViewModelProvider(
-            this, viewModelFactory).get(NotesViewModel::class.java)
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = viewLifecycleOwner
-
         /**
          * noteClicked : run onNoteClicked from viewModel using the noteId of the note that was clicked
          */
-        fun noteClicked (noteId : Long) {
-            viewModel.onNoteClicked(noteId)
+        fun noteClicked (note : Note) {
+            viewModel.onNoteClicked(note)
         }
         /**
          * yesPressed : if yes is pressed on comfirmation dialog, run deleteNote from viewModel
          * using noteId whose delButton was pressed
          */
-        fun yesPressed(noteId : Long) {
+        fun yesPressed(noteId : String) {
             binding.viewModel?.deleteNote(noteId)
         }
         /**
          * deleteClicked : create a confirmation dialog to delete note whose delButton was pressed
          */
-        fun deleteClicked (noteId : Long) {
+        fun deleteClicked (noteId : String) {
             ConfirmDeleteDialogFragment(noteId,::yesPressed).show(childFragmentManager,
                 ConfirmDeleteDialogFragment.TAG)
         }
@@ -78,7 +71,8 @@ class MainFragment : Fragment() {
         // navigate to EditNote Fragment
         viewModel.navigateToNote.observe(viewLifecycleOwner, Observer { noteId ->
             noteId?.let {
-                val action = MainFragmentDirections.actionMainFragmentToEditNoteFragment(noteId)
+                val action = MainFragmentDirections
+                    .actionMainFragmentToEditNoteFragment(noteId)
                 this.findNavController().navigate(action)
                 viewModel.onNoteNavigated()
             }

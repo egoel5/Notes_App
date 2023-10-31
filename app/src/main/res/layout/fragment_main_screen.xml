@@ -47,7 +47,8 @@
                 android:title="New Note"
                 android:src="@android:drawable/ic_menu_help"
                 android:layout_gravity="right"
-                android:background="@color/material_dynamic_tertiary40"/>
+                android:background="@color/material_dynamic_tertiary40"
+                android:onClick="@{() -> viewModel.onNewNoteClicked()}"/>
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -60,15 +61,5 @@
             android:layout_margin="10dp">
         </androidx.recyclerview.widget.RecyclerView>
 
-        <Button
-            android:id="@+id/butAddNote"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Note"
-            android:onClick="@{() -> viewModel.addNote()}"
-            android:layout_margin="10dp">
-
-        </Button>
     </LinearLayout>
 </layout>

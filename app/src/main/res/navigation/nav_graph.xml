@@ -15,7 +15,7 @@
             app:destination="@id/editNoteFragment" />
         <argument
             android:name="noteId"
-            app:argType="long">
+            app:argType="string">
         </argument>
     </fragment>
     <fragment
@@ -28,7 +28,31 @@
             app:destination="@id/mainFragment" />
         <argument
             android:name="noteId"
-            app:argType="long">
+            app:argType="string">
         </argument>
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.c323_project6.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signInFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.c323_project6.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
     </fragment>
 </navigation>

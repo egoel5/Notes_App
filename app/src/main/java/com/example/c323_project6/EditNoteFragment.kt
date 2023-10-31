@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -23,15 +24,8 @@ class EditNoteFragment : Fragment() {
         val view = binding.root
         val noteId = EditNoteFragmentArgs.fromBundle(requireArguments()).noteId
 
-        // initialize application and dao
-        val application = requireNotNull(this.activity).application
-        val dao = NoteDatabase.getInstance(application).noteDao
-
-        // initialize the ViewModelFactory and get the viewModel, then set viewModel and lifecycleOwner
-        val viewModelFactory = EditNoteViewModelFactory(noteId, dao)
-        val viewModel = ViewModelProvider(this, viewModelFactory)
-            .get(EditNoteViewModel::class.java)
-
+        val viewModel : NotesViewModel by activityViewModels()
+        viewModel.noteId = noteId
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 

@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.c323_project6.EditNoteViewModel" />
+            type="com.example.c323_project6.NotesViewModel" />
     </data>
 
     <!-- TODO: Update blank fragment layout -->
@@ -31,6 +31,7 @@
                 ></TextView>
 
             <ImageButton
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/profileFragment"
@@ -66,7 +67,7 @@
             android:layout_height="wrap_content"
             android:hint="Description"
             android:layout_weight="2"
-            android:text="@={viewModel.note.noteText}"
+            android:text="@={viewModel.note.noteContent}"
             android:layout_margin="10dp">
 
         </EditText>
