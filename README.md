@@ -1,6 +1,6 @@
 # Notes App
 
-This application can allow users to create, save, and update notes. This allows people to be more organized and get tasks done more efficiently in their daily life.
+This application can allow users to create, save, update notes, log in, sign up, and access their profile to log out. This allows users to log in to a Firebase Authentication system in order to access notes that are stored in a Firebase Realtime Database. this project ensures that users can efficiently store notes in order to go about their life in a more organized manner.
 
 ## Functionality 
 
@@ -10,21 +10,24 @@ The following **required** functionality is completed:
 * [✅] User can create new notes
 * [✅] User can update pre-existing notes
 * [✅] User can delete notes
+* [✅] User can log in, sign up, and log out of Firebase Authentication
+* [✅] User notes are stored in Firebase Realtime Database
+* [✅] User can only access notes when signed in
 
 The following **extensions** are implemented:
-* Every new note is initialized with a preset title instead of just a blank title
+* Sign in and sign up pages are on separate fragments rather than all on one fragment to simulate a more accurate log in process.
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-![](https://github.com/egoel5/C323_Project6/blob/master/Project%206%20Video%20Walkthrough.gif)
+![]()
 
 GIF created with [Adobe Express](https://new.express.adobe.com).
 
 ## Notes
 
-A challenge I had while building the project was that I couldn't figure out how to make it so that when the Add Note button is pressed, it navigates to the EditNote Fragment and actually saves the data when Save button is pressed. Currently it just creates a new Note on the main screen, which the user can click on to edit. 
+A challenge I had while building the project was that I couldn't get my note data to store in the Realtime Database because I had set the rules to locked mode on creation in the Firebase console. I fixed this by setting the rules so that anyone could access the database until I had my user logins working, after which I set the rules to only allow access to authorized users who have signed up. 
 
 ## License
 
