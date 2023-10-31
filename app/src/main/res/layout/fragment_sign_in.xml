@@ -13,11 +13,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/material_dynamic_tertiary40">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notes"
+                android:layout_gravity="center"
+                android:textSize="35dp"
+                android:textColor="@color/white"
+                ></TextView>
+
+        </androidx.appcompat.widget.Toolbar>
+
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign In"
+            android:paddingTop="15dp"
+            android:layout_gravity="center"
             android:textColor="@color/black"
             android:textSize="30sp"/>
 
@@ -62,9 +82,13 @@
 
         <Button
             android:id="@+id/nextBtn"
-            android:layout_width="wrap_content"
+            android:layout_marginVertical="15dp"
+            android:padding="15dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Submit"
+            android:layout_gravity="center"
+            android:textSize="20dp"
             android:onClick="@{() -> viewModel.signIn()}"
             android:contentDescription="Click to sign in"/>
 
@@ -75,15 +99,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="Not Registered Yet?"
-            android:textSize="16sp"/>
+            android:textSize="25sp"
+            android:padding="10dp"/>
 
         <TextView
             android:id="@+id/textViewSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" Sign Up"
+            android:text="   Sign Up"
+            android:padding="10dp"
             android:textColor="@color/text_color"
-            android:textSize="16sp"
+            android:textSize="23sp"
             android:onClick="@{() -> viewModel.navigateToSignUp()}"/>
     </LinearLayout>
 </layout>

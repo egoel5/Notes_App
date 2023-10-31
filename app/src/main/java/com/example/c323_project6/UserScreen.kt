@@ -10,11 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import com.example.c323_project6.databinding.FragmentUserScreenBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 /**
  * A simple [Fragment] subclass.
  * Use the [UserScreen.newInstance] factory method to
