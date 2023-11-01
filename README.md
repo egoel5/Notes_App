@@ -21,7 +21,7 @@ The following **extensions** are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-![]()
+![](https://github.com/egoel5/C323_Project6/blob/project7/Project%207%20Video%20Walkthrough.gif)
 
 GIF created with [Adobe Express](https://new.express.adobe.com).
 
