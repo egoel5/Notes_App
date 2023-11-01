@@ -37,6 +37,7 @@ class UserScreen : Fragment() {
             }
         })
 
+        // navigate back to home screen
         viewModel.navigateToList.observe(viewLifecycleOwner, Observer { navigate ->
             if (navigate) {
                 view.findNavController()

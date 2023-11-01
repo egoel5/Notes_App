@@ -43,6 +43,8 @@ class SignInFragment : Fragment() {
                 viewModel.onNavigatedToList()
             }
         })
+
+        // navigate to sign up page
         viewModel.navigateToSignUp.observe(viewLifecycleOwner, Observer { navigate ->
             if (navigate) {
                 view.findNavController()
@@ -50,6 +52,7 @@ class SignInFragment : Fragment() {
                 viewModel.onNavigatedToSignUp()
             }
         })
+        // send a toast if something goes wrong
         viewModel.errorHappened.observe(viewLifecycleOwner, Observer { error ->
             error?.let {
                 Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
